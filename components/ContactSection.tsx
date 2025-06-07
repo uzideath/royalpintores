@@ -18,12 +18,12 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     setIsSubmitting(true)
 
@@ -53,7 +53,7 @@ export default function ContactSection() {
         <div className="space-y-6 flex flex-col justify-between">
           <div className="flex items-center">
             <Image
-              src="/royal-pintores-logo.png"
+              src="/logo.png"
               alt="Royal Pintores Logo"
               width={240}
               height={100}

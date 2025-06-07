@@ -12,15 +12,15 @@ import "swiper/css/pagination"
 
 const projectImages = [
   {
-    src: "/modern-living-room-painting.png",
+    src: "/1.jpeg",
     alt: "Proyecto de Pintura Interior",
   },
   {
-    src: "/exterior-house-painting.png",
+    src: "/2.jpeg",
     alt: "Proyecto de Pintura Exterior",
   },
   {
-    src: "/placeholder-1o6nn.png",
+    src: "/3.jpeg",
     alt: "Proyecto de Pintura Comercial",
   },
 ]
