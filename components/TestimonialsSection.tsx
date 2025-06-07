@@ -30,14 +30,14 @@ export default function TestimonialsSection() {
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
           {[
             {
-              image: "/placeholder.svg?height=600&width=450&query=professional woman homeowner",
+              image: "/7.jpeg",
               quote:
                 "Royal Pintores transformó nuestro hogar en El Vendrell con una atención excepcional al detalle. Su equipo fue profesional, puntual, y la calidad del trabajo superó nuestras expectativas. Hemos recibido innumerables elogios por nuestro nuevo interior.",
               name: "Sara Martínez",
               role: "Propietaria en El Vendrell",
             },
             {
-              image: "/placeholder.svg?height=600&width=450&query=business owner in office",
+              image: "/9.jpeg",
               quote:
                 "Como administrador de propiedades comerciales en Tarragona, he trabajado con muchos contratistas de pintura, pero Royal Pintores destaca sobre el resto. Su equipo completó la renovación de nuestra oficina a tiempo y con mínima interrupción para nuestras operaciones comerciales.",
               name: "Miguel Rodríguez",

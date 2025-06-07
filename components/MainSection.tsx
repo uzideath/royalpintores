@@ -12,15 +12,15 @@ import "swiper/css/pagination"
 
 const projectImages = [
   {
-    src: "/1.jpeg",
+    src: "/modern-living-room-painting.jpeg",
     alt: "Proyecto de Pintura Interior",
   },
   {
-    src: "/2.jpeg",
+    src: "/exterior-house-painting.jpeg",
     alt: "Proyecto de Pintura Exterior",
   },
   {
-    src: "/3.jpeg",
+    src: "/placeholder-1o6nn.jpeg",
     alt: "Proyecto de Pintura Comercial",
   },
 ]
@@ -116,7 +116,7 @@ export default function MainSection() {
         {/* Exhibition Image */}
         <div className="aspect-[16/9] relative bg-gray-200 dark:bg-gray-900 mb-16 sm:mb-32">
           <Image
-            src="/placeholder.svg?height=600&width=1200"
+            src="/paint.png"
             alt="Muestra de Pintura Profesional"
             fill
             className="object-cover"

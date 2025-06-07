@@ -31,11 +31,12 @@ export default function NavBar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo.png"
+            src="/royal-pintores-logo.png"
             alt="Royal Pintores Logo"
-            width={180}
-            height={75}
-            className="h-14 sm:h-16 w-auto"
+            width={200}
+            height={80}
+            className="h-12 sm:h-16 w-auto"
+            priority
           />
         </Link>
         <div className="hidden sm:flex items-center gap-4 sm:gap-8">

@@ -11,7 +11,7 @@ const featuredProjects = {
   residencial: {
     id: "residencial-featured",
     title: "Villa de Lujo en Sitges",
-    thumbnail: "/projects/luxury-villa.png",
+    thumbnail: "/5.jpeg",
     images: ["/projects/luxury-villa.png", "/projects/luxury-villa-detail.png", "/projects/luxury-villa-exterior.png"],
     description:
       "Proyecto integral de pintura para una villa de lujo en Sitges. Trabajamos tanto en el interior como en el exterior, aplicando técnicas decorativas especiales en el salón principal y utilizando pintura resistente a la intemperie para la fachada y zonas exteriores.",
@@ -23,7 +23,7 @@ const featuredProjects = {
   comercial: {
     id: "comercial-featured",
     title: "Oficinas Corporativas en Tarragona",
-    thumbnail: "/projects/office-project.png",
+    thumbnail: "/3.jpeg",
     images: [
       "/projects/office-project.png",
       "/projects/office-project-reception.png",
@@ -39,7 +39,7 @@ const featuredProjects = {
   especialidad: {
     id: "especialidad-featured",
     title: "Acabados Decorativos en Calafell",
-    thumbnail: "/projects/decorative-project.png",
+    thumbnail: "/4.jpeg",
     images: [
       "/projects/decorative-project.png",
       "/projects/decorative-project-detail.png",
@@ -54,11 +54,24 @@ const featuredProjects = {
   },
 }
 
+// Define the Project type outside the component to make it reusable
+type Project = {
+  id: string
+  title: string
+  thumbnail: string
+  images: string[]
+  description: string
+  location: string
+  type: string
+  duration: string
+  services: string[]
+}
+
 export default function FeaturedWorkSection() {
-  const [selectedProject, setSelectedProject] = useState(null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const openProject = (project) => {
+  const openProject = (project: Project) => {
     setSelectedProject(project)
     setIsModalOpen(true)
   }

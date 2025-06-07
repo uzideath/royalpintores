@@ -30,7 +30,7 @@ export default function RunningProjectsSection() {
         <div className="relative group">
           <div className="aspect-[16/9] relative overflow-hidden rounded-2xl">
             <Image
-              src="/placeholder.svg?height=800&width=1600&query=luxury home exterior being painted by professionals"
+              src="/6.webp"
               alt="Proyecto actual de pintura de una propiedad de lujo"
               fill
               className="object-cover"

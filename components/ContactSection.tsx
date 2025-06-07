@@ -18,12 +18,12 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
@@ -49,41 +49,45 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="max-w-7xl mx-auto mt-16 sm:mt-32 px-4 sm:px-6 pb-16">
-      <div className="grid sm:grid-cols-2 gap-8 sm:gap-16 items-stretch">
-        <div className="space-y-6 flex flex-col justify-between">
-          <div className="flex items-center">
+      <div className="grid sm:grid-cols-2 gap-8 sm:gap-16 items-start">
+        {/* Logo and Contact Info */}
+        <div className="space-y-8">
+          <div className="flex items-center justify-center w-full">
             <Image
-              src="/logo.png"
+              src="/royal-pintores-logo.png"
               alt="Royal Pintores Logo"
-              width={240}
-              height={100}
-              className="h-24 sm:h-28 w-auto"
+              width={400}
+              height={200}
+              className="w-full max-w-md h-auto"
+              priority
             />
           </div>
-          <div className="space-y-4">
-            <h3 className="text-xl sm:text-2xl font-bold">TRANSFORMA TU ESPACIO</h3>
-            <p className="text-gray-600 dark:text-gray-400">
+
+          <div className="space-y-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-theme-primary">TRANSFORMA TU ESPACIO</h3>
+            <p className="text-theme-secondary">
               ¿Listo para renovar tu hogar o negocio? Nuestro equipo de pintores profesionales ofrece resultados
               excepcionales con materiales premium y meticulosa atención al detalle en El Vendrell, Tarragona, Barcelona
               y alrededores.
             </p>
-            <div className="max-w-sm space-y-4">
+
+            <div className="max-w-sm">
               <a
                 href="tel:+34613962582"
-                className="inline-flex items-center gap-2 border border-gray-800 dark:border-white px-4 py-2 hover:bg-gray-800 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors w-full justify-center"
+                className="inline-flex items-center gap-2 border border-theme px-4 py-2 hover:bg-theme-secondary transition-colors w-full justify-center text-theme-primary"
               >
                 <Phone className="w-4 h-4" /> Llamar ahora: 613 962 582
               </a>
             </div>
 
-            <div className="mt-8 space-y-6">
+            <div className="space-y-6">
               <div className="flex items-start gap-3">
-                <Phone className="w-5 h-5 mt-1 text-gray-500 dark:text-gray-400" />
+                <Phone className="w-5 h-5 mt-1 text-theme-secondary" />
                 <div>
-                  <p className="font-medium">Teléfono</p>
+                  <p className="font-medium text-theme-primary">Teléfono</p>
                   <a
                     href="tel:+34613962582"
-                    className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white"
+                    className="text-theme-secondary hover:text-theme-primary transition-colors"
                   >
                     613 962 582
                   </a>
@@ -91,12 +95,12 @@ export default function ContactSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <Mail className="w-5 h-5 mt-1 text-gray-500 dark:text-gray-400" />
+                <Mail className="w-5 h-5 mt-1 text-theme-secondary" />
                 <div>
-                  <p className="font-medium">Email</p>
+                  <p className="font-medium text-theme-primary">Email</p>
                   <a
                     href="mailto:info@royalpintores.com"
-                    className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white"
+                    className="text-theme-secondary hover:text-theme-primary transition-colors"
                   >
                     info@royalpintores.com
                   </a>
@@ -104,21 +108,22 @@ export default function ContactSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 mt-1 text-gray-500 dark:text-gray-400" />
+                <MapPin className="w-5 h-5 mt-1 text-theme-secondary" />
                 <div>
-                  <p className="font-medium">Área de servicio</p>
-                  <p className="text-gray-700 dark:text-gray-300">El Vendrell, Tarragona, Barcelona y alrededores</p>
+                  <p className="font-medium text-theme-primary">Área de servicio</p>
+                  <p className="text-theme-secondary">El Vendrell, Tarragona, Barcelona y alrededores</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-black border border-gray-200 dark:border-gray-800 p-6 rounded-lg shadow-sm dark:shadow-none">
-          <h3 className="text-xl font-bold mb-4">Solicitar Presupuesto</h3>
+        {/* Contact Form */}
+        <div className="border border-theme p-6 rounded-lg bg-card">
+          <h3 className="text-xl font-bold mb-4 text-theme-primary">Solicitar Presupuesto</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="nombre" className="block text-sm font-medium mb-1">
+              <label htmlFor="nombre" className="block text-sm font-medium mb-1 text-theme-primary">
                 Nombre*
               </label>
               <input
@@ -128,12 +133,12 @@ export default function ContactSection() {
                 value={formData.nombre}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 bg-gray-50 dark:bg-black border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800 dark:focus:ring-white"
+                className="w-full px-3 py-2 bg-input border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-ring text-foreground"
               />
             </div>
 
             <div>
-              <label htmlFor="telefono" className="block text-sm font-medium mb-1">
+              <label htmlFor="telefono" className="block text-sm font-medium mb-1 text-theme-primary">
                 Teléfono*
               </label>
               <input
@@ -143,12 +148,12 @@ export default function ContactSection() {
                 value={formData.telefono}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 bg-gray-50 dark:bg-black border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800 dark:focus:ring-white"
+                className="w-full px-3 py-2 bg-input border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-ring text-foreground"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-1">
+              <label htmlFor="email" className="block text-sm font-medium mb-1 text-theme-primary">
                 Email
               </label>
               <input
@@ -157,12 +162,12 @@ export default function ContactSection() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-3 py-2 bg-gray-50 dark:bg-black border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800 dark:focus:ring-white"
+                className="w-full px-3 py-2 bg-input border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-ring text-foreground"
               />
             </div>
 
             <div>
-              <label htmlFor="ubicacion" className="block text-sm font-medium mb-1">
+              <label htmlFor="ubicacion" className="block text-sm font-medium mb-1 text-theme-primary">
                 Ubicación
               </label>
               <input
@@ -172,12 +177,12 @@ export default function ContactSection() {
                 value={formData.ubicacion}
                 onChange={handleChange}
                 placeholder="¿Dónde se realizará el trabajo?"
-                className="w-full px-3 py-2 bg-gray-50 dark:bg-black border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800 dark:focus:ring-white"
+                className="w-full px-3 py-2 bg-input border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-ring text-foreground placeholder:text-muted-foreground"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Tipo de servicio</label>
+              <label className="block text-sm font-medium mb-1 text-theme-primary">Tipo de servicio</label>
               <div className="grid grid-cols-2 gap-2">
                 {[
                   { id: "interior", label: "Pintura Interior" },
@@ -195,7 +200,7 @@ export default function ContactSection() {
                       onChange={handleChange}
                       className="mr-2"
                     />
-                    <label htmlFor={option.id} className="text-sm">
+                    <label htmlFor={option.id} className="text-sm text-theme-primary">
                       {option.label}
                     </label>
                   </div>
@@ -204,7 +209,7 @@ export default function ContactSection() {
             </div>
 
             <div>
-              <label htmlFor="mensaje" className="block text-sm font-medium mb-1">
+              <label htmlFor="mensaje" className="block text-sm font-medium mb-1 text-theme-primary">
                 Mensaje
               </label>
               <textarea
@@ -214,23 +219,22 @@ export default function ContactSection() {
                 onChange={handleChange}
                 rows={4}
                 placeholder="Describe brevemente tu proyecto..."
-                className="w-full px-3 py-2 bg-gray-50 dark:bg-black border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800 dark:focus:ring-white"
+                className="w-full px-3 py-2 bg-input border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-ring text-foreground placeholder:text-muted-foreground"
               ></textarea>
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting || submitSuccess}
-              className={`w-full flex items-center justify-center gap-2 py-2 px-4 rounded-md transition-colors ${
-                submitSuccess
+              className={`w-full flex items-center justify-center gap-2 py-2 px-4 rounded-md transition-colors ${submitSuccess
                   ? "bg-green-600 hover:bg-green-700 text-white"
-                  : "bg-gray-800 dark:bg-white text-white dark:text-black hover:bg-gray-700 dark:hover:bg-gray-200"
-              }`}
+                  : "bg-primary text-primary-foreground hover:bg-primary/90"
+                }`}
             >
               {isSubmitting ? (
                 <>
                   <svg
-                    className="animate-spin h-5 w-5 text-white dark:text-gray-900"
+                    className="animate-spin h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -278,39 +282,46 @@ export default function ContactSection() {
       {/* Footer */}
       <div className="mt-16 sm:mt-32 grid grid-cols-2 sm:grid-cols-4 gap-8">
         <div className="space-y-4">
-          <div className="text-sm text-gray-500 dark:text-gray-400">Navegación</div>
+          <div className="text-sm text-theme-secondary">Navegación</div>
           {["Servicios", "Proyectos", "Zonas", "Contacto"].map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="block hover:text-gray-600 dark:hover:text-gray-300"
+              className="block hover:text-theme-primary transition-colors text-theme-secondary"
             >
               {item}
             </Link>
           ))}
         </div>
         <div className="space-y-4">
-          <div className="text-sm text-gray-500 dark:text-gray-400">Servicios</div>
+          <div className="text-sm text-theme-secondary">Servicios</div>
           {["Pintura Interior", "Pintura Exterior", "Comercial", "Acabados Especiales"].map((item) => (
-            <Link key={item} href="#services" className="block hover:text-gray-600 dark:hover:text-gray-300">
+            <Link
+              key={item}
+              href="#services"
+              className="block hover:text-theme-primary transition-colors text-theme-secondary"
+            >
               {item}
             </Link>
           ))}
         </div>
         <div className="space-y-4 md:col-span-2">
-          <div className="text-sm text-gray-500 dark:text-gray-400">Conecta</div>
+          <div className="text-sm text-theme-secondary">Conecta</div>
           <div className="flex gap-4">
-            <a href="tel:+34613962582" className="hover:text-gray-600 dark:hover:text-gray-300">
+            <a href="tel:+34613962582" className="hover:text-theme-primary transition-colors text-theme-secondary">
               Teléfono
             </a>
-            <a href="mailto:info@royalpintores.com" className="hover:text-gray-600 dark:hover:text-gray-300">
+            <a
+              href="mailto:info@royalpintores.com"
+              className="hover:text-theme-primary transition-colors text-theme-secondary"
+            >
               Email
             </a>
             <a
               href="https://wa.me/34613962582"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-600 dark:hover:text-gray-300"
+              className="hover:text-theme-primary transition-colors text-theme-secondary"
             >
               WhatsApp
             </a>
@@ -318,15 +329,15 @@ export default function ContactSection() {
         </div>
       </div>
 
-      <div className="mt-8 sm:mt-16 flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-gray-200 dark:border-gray-800">
-        <div className="text-sm text-gray-500 dark:text-gray-400 mb-4 sm:mb-0">
+      <div className="mt-8 sm:mt-16 flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-theme">
+        <div className="text-sm text-theme-secondary mb-4 sm:mb-0">
           © 2023 Royal Pintores. Todos los derechos reservados.
         </div>
         <div className="flex gap-4">
-          <Link href="#" className="hover:text-gray-600 dark:hover:text-gray-300">
+          <Link href="#" className="hover:text-theme-primary transition-colors text-theme-secondary">
             Política de Privacidad
           </Link>
-          <Link href="#" className="hover:text-gray-600 dark:hover:text-gray-300">
+          <Link href="#" className="hover:text-theme-primary transition-colors text-theme-secondary">
             Términos de Servicio
           </Link>
         </div>
