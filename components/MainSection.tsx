@@ -1,8 +1,12 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Phone } from "lucide-react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper/modules"
+
+// Import Swiper styles
 import "swiper/css"
 import "swiper/css/pagination"
 
@@ -112,7 +116,7 @@ export default function MainSection() {
         {/* Exhibition Image */}
         <div className="aspect-[16/9] relative bg-gray-200 dark:bg-gray-900 mb-16 sm:mb-32">
           <Image
-            src="/placeholder.svg?height=600&width=1200&query=professional painters working on a luxury home interior"
+            src="/placeholder.svg?height=600&width=1200"
             alt="Muestra de Pintura Profesional"
             fill
             className="object-cover"
